@@ -1,0 +1,53 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        #inputs: two strings 
+        #brute force solution is to sort both strings, compare each string. if they match then return True, otherwise false. 
+        #more optimal solution - check each letter frequency, if they are the same then the words are the same - using a dictionary. 
+        # if sorted(s) == sorted(t): #O(N)  O(nlogn)
+        #     return True
+        # else:
+        #     return False
+        # dictionary solution
+        # words = [s, t]
+        # print(words)
+        # allcounts = []
+        # for word in words:
+        #     print(word)
+        #     current_count = {}
+        #     for char in word:
+        #         current_count[char] = current_count.get(char,0)+1
+        #     allcounts.append(current_count)
+        
+        if len(s) != len(t):
+            return False 
+        
+        # empty dictionary
+        count_s = {}
+        count_t = {}
+
+        for char in s: 
+            count_s[char] = count_s.get(char,0)+1
+        
+        for char in t: 
+            count_t[char] = count_t.get(char,0)+1
+
+        return count_s == count_t
+
+
+
+        # Frewuency dictionary for each string and records how many times the character occurs. 
+
+        # First "a":
+        # Current count is missing, so use 0
+        # 0 + 1
+        # counts_s = {"a": 1}
+
+        # Second "a":
+        # Current count is 1
+        # 1 + 1
+        # counts_s = {"a": 2}
+
+        # Then "b":
+        # Current count is missing, so use 0
+        # 0 + 1
+        # counts_s = {"a": 2, "b": 1}
